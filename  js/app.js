@@ -6,23 +6,33 @@ $(function() {
 	// teach.circle = teach.paper.circle(500, 100, 40);
 	// teach.rect = teach.paper.rect(10, 100, 300, 200);
 
-	var paper = Raphael('draw', 0, 0, 600, 512);
-	var rect = paper.rect(5, 5, 505, 505);
+	var paper = Raphael("container", 1000, 1000);
+	// var r = paper.rect(900,900);
+	// r.attr({fill: 'blue'});
 
 	//var c = paper.circle(400, 250, 20);
 
 	//var d = 50;
-	var r;
 	var grid = function() {
 		var d = 50;
 		for (var i = 1; i <= 9; i++) {
 			for (var j = 1; j <= 9; j++) {
-				r = paper.rect(d*i, d*j, d, d);
+				var r = paper.rect(d*i, d*j, d, d);
 				r.attr({fill: 'white', cursor: 'pointer'});
 			}
 		}
 	};
 	grid();
+
+	window.addEventListener("click", getClickPosition, false);
+
+	function getClickPosition(e) {
+		var xPosition = e.clientX;
+		var yPosition = e.clientY;
+		console.log(xPosition);
+		console.log(yPosition);
+		var c = paper.circle(xPosition - 5, yPosition - 5, 10);
+	}
 
 	// function getClickPosition(e, r) {
 	//     var parentPosition = getPosition(e.currentTarget);

@@ -11,17 +11,40 @@ $(function() {
 
 	//var c = paper.circle(400, 250, 20);
 
+// 	var grid = function() {
+// 		var position = 50;
+// 		var height = 50;
+// 		var width = 50;
+// 		for (var i = 1; i <= 10; i++) {
+// 			for (var j = 1; j <= 10; j++) {
+// 				var r = paper.rect(position*i, position*j, width, height);
+
+	// var r = paper.rect(900,900);
+	// r.attr({fill: 'blue'});
+
+	//var c = paper.circle(400, 250, 20);
+
+	//var d = 50;
 	var grid = function() {
-		var position = 50;
-		var height = 50;
-		var width = 50;
-		for (var i = 1; i <= 10; i++) {
-			for (var j = 1; j <= 10; j++) {
-				var r = paper.rect(position*i, position*j, width, height);
+		var d = 50;
+		for (var i = 1; i <= 9; i++) {
+			for (var j = 1; j <= 9; j++) {
+				var r = paper.rect(d*i, d*j, d, d);
+				r.attr({fill: 'white', cursor: 'pointer'});
 			}
 		}
 	};
 	grid();
+
+	window.addEventListener("click", getClickPosition, false);
+
+	function getClickPosition(e) {
+		var xPosition = e.clientX;
+		var yPosition = e.clientY;
+		console.log(xPosition);
+		console.log(yPosition);
+		var c = paper.circle(xPosition - 5, yPosition - 5, 10);
+	}
 
 	// function getClickPosition(e, r) {
 	//     var parentPosition = getPosition(e.currentTarget);

@@ -11,6 +11,13 @@ $(function() {
 
 	//var c = paper.circle(400, 250, 20);
 
+	var rect = paper.rect(700, 30, 100, 100);
+	rect.attr({
+		fill: "purple"
+	}).animate({
+		y : 350
+	}, 1000, "easeIn");
+
 // 	var grid = function() {
 // 		var position = 50;
 // 		var height = 50;
@@ -26,10 +33,12 @@ $(function() {
 
 	//var d = 50;
 	var grid = function() {
-		var d = 50;
+		var position = 50;
+ 		var height = 50;
+ 		var width = 50;
 		for (var i = 1; i <= 9; i++) {
 			for (var j = 1; j <= 9; j++) {
-				var r = paper.rect(d*i, d*j, d, d);
+				var r = paper.rect(position*i, position*j, width, height);
 				r.attr({fill: 'white', cursor: 'pointer'});
 			}
 		}
@@ -38,12 +47,29 @@ $(function() {
 
 	window.addEventListener("click", getClickPosition, false);
 
+	var count = 0;
 	function getClickPosition(e) {
 		var xPosition = e.clientX;
 		var yPosition = e.clientY;
-		console.log(xPosition);
-		console.log(yPosition);
 		var c = paper.circle(xPosition - 5, yPosition - 5, 10);
+		if (count % 2 === 0) {
+			c.attr({
+				fill: "90-#f00-#000",
+				stroke: "none" 
+			});
+			c.animate({
+				y : yPosition - 5
+			}, 1000, "easeIn");
+		} else {
+			c.attr({
+				fill: "270-#0000CC-#000",
+				stroke: "none"
+			});
+			c.animate({
+				y : yPosition - 5
+			}, 1000, "easeIn");
+		}
+		count++;
 	}
 
 	// function getClickPosition(e, r) {

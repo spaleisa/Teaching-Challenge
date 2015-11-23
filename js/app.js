@@ -1,37 +1,45 @@
 'use strict';
 
 $(function() {
-	// window.teach = {}
-	// teach.paper = Raphael(300, 0, 900, 500);
-	// teach.circle = teach.paper.circle(500, 100, 40);
-	// teach.rect = teach.paper.rect(10, 100, 300, 200);
 
-	var paper = Raphael("container", 1000, 1000);
-	//var rect = paper.rect(0, 0, 1000, 1000);
+	var paper = Raphael("container", 1500, 1000);
 
-	//var c = paper.circle(400, 250, 20);
+	// var rect = paper.rect(700, 30, 100, 100);
+	// rect.attr({
+	// 	fill: "purple"
+	// }).animate({
+	// 	y : 350
+	// }, 1000, "easeIn");
 
 	var rect = paper.rect(700, 30, 100, 100);
-	rect.attr({
-		fill: "purple"
-	}).animate({
-		y : 350
-	}, 1000, "easeIn");
+    rect.attr({
+        fill: 'purple',
+        "stroke-width": '10',
+        cursor : "pointer"
+    }).hover(function(){
+        this.attr({fill : "gold"})
+    }, function() {
+        this.attr({fill: 'purple'});
+    });
 
-// 	var grid = function() {
-// 		var position = 50;
-// 		var height = 50;
-// 		var width = 50;
-// 		for (var i = 1; i <= 10; i++) {
-// 			for (var j = 1; j <= 10; j++) {
-// 				var r = paper.rect(position*i, position*j, width, height);
+    var c = paper.circle(950, 90, 50, 50, 50);
+    c.attr({
+        fill: '180-#009933-#000'
+    }).animate({
+        cy : 500, 
+        transform: "s2"
+    }, 1000, "bounce");
 
-	// var r = paper.rect(900,900);
-	// r.attr({fill: 'blue'});
+    var r = paper.rect(700, 250, 100, 100);
+    r.attr({
+        fill : "orange"
+    }).animate({
+        transform: "r180",
+        fill: "blue"
+    }, 1000);
 
-	//var c = paper.circle(400, 250, 20);
 
-	//var d = 50;
+
 	var grid = function() {
 		var position = 50;
  		var height = 50;
@@ -51,14 +59,14 @@ $(function() {
 	function getClickPosition(e) {
 		var xPosition = e.clientX;
 		var yPosition = e.clientY;
-		var c = paper.circle(xPosition - 5, yPosition - 5, 10);
+		var c = paper.circle(xPosition - 5, 0, 10);
 		if (count % 2 === 0) {
 			c.attr({
 				fill: "90-#f00-#000",
 				stroke: "none" 
 			});
 			c.animate({
-				y : yPosition - 5
+				cy : yPosition - 5
 			}, 1000, "easeIn");
 		} else {
 			c.attr({
@@ -66,7 +74,7 @@ $(function() {
 				stroke: "none"
 			});
 			c.animate({
-				y : yPosition - 5
+				cy : yPosition - 5
 			}, 1000, "easeIn");
 		}
 		count++;

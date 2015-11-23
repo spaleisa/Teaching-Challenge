@@ -2,42 +2,16 @@
 
 $(function() {
 
-	var paper = Raphael("container", 1500, 1000);
-
-	// var rect = paper.rect(700, 30, 100, 100);
-	// rect.attr({
-	// 	fill: "purple"
-	// }).animate({
-	// 	y : 350
-	// }, 1000, "easeIn");
+var paper = Raphael("container", 1500, 1000);
+	var prect = paper.rect(0, 0, 1500, 1000);
 
 	var rect = paper.rect(700, 30, 100, 100);
-    rect.attr({
-        fill: 'purple',
-        "stroke-width": '10',
-        cursor : "pointer"
-    }).hover(function(){
-        this.attr({fill : "gold"})
-    }, function() {
-        this.attr({fill: 'purple'});
-    });
-
-    var c = paper.circle(950, 90, 50, 50, 50);
-    c.attr({
-        fill: '180-#009933-#000'
-    }).animate({
-        cy : 500, 
-        transform: "s2"
-    }, 1000, "bounce");
-
-    var r = paper.rect(700, 250, 100, 100);
-    r.attr({
-        fill : "orange"
-    }).animate({
-        transform: "r180",
-        fill: "blue"
-    }, 1000);
-
+	rect.attr({
+		fill: "180-#009933-#000"
+	}).animate({
+		cy : 300,
+		transform: "r180"
+	}, 1000);
 
 
 	var grid = function() {
@@ -79,28 +53,38 @@ $(function() {
 		}
 		count++;
 	}
-
-	// function getClickPosition(e, r) {
-	//     var parentPosition = getPosition(e.currentTarget);
-	//     var xPosition = e.clientX - parentPosition.x;
-	//     var yPosition = e.clientY - parentPosition.y;
-
-	//     var c = paper.circle(xPosition, yPosition, 20);
-	//     r.node.onclick = function() {
-	//     	c.attr("fill", "red");
-	//     };
-	// }
- 
-	// function getPosition(element) {
- //    	var xPosition = 0;
- //    	var yPosition = 0;
-      
- //    	while (element) {
- //        	xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
- //        	yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
- //        	element = element.offsetParent;
- //    	}
- //    	return { x: xPosition, y: yPosition };
-	// }
 });
+
+
+
+// This is what we originally wanted to do but realized it was way too long. We wanted to still keep it in so that you guys could view it and anyone who clones the code can still see it.
+
+
+
+	// var rect = paper.rect(700, 30, 100, 100);
+ //    rect.attr({
+ //        fill: 'purple',
+ //        "stroke-width": '10',
+ //        cursor : "pointer"
+ //    }).hover(function(){
+ //        this.attr({fill : "gold"})
+ //    }, function() {
+ //        this.attr({fill: 'purple'});
+ //    });
+
+ //    var c = paper.circle(950, 90, 50, 50, 50);
+ //    c.attr({
+ //        fill: '180-#009933-#000'
+ //    }).animate({
+ //        cy : 500, 
+ //        transform: "s2"
+ //    }, 1000, "bounce");
+
+ //    var r = paper.rect(700, 250, 100, 100);
+ //    r.attr({
+ //        fill : "orange"
+ //    }).animate({
+ //        transform: "r180",
+ //        fill: "blue"
+ //    }, 1000);
 
